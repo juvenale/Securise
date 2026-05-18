@@ -1,0 +1,19 @@
+node_modules/
+react-pwa/
+
+# Scripts de dev
+fix-lazy-explanations.mjs
+merge-explanations.mjs
+reinject-data.mjs
+rename-exams.js
+
+# Fichiers intermédiaires
+data-fixed.json
+explanations-generated.json
+package.json
+package-lock.json
+start-pwa-server.ps1
+
+# Anciens fichiers TypeScript/TSX
+*.ts
+*.tsx
