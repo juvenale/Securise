@@ -1,0 +1,217 @@
+/* Modern Security+ App Theme - UX/UI Upgrade */
+:root {
+  /* Deep Slate Dark Mode (Default) */
+  --bg: #0f172a;
+  --surface: #1e293b;
+  --surface-2: #334155;
+  --surface-3: #475569;
+  
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --soft: #cbd5e1;
+  
+  --line: #334155;
+  --line-strong: #475569;
+
+  /* Vibrant Accents */
+  --primary: #3b82f6;
+  --primary-hover: #2563eb;
+  --active-bg: rgba(59, 130, 246, 0.15);
+  --active-text: #60a5fa;
+  
+  --blue: #3b82f6;
+  --cyan: #06b6d4;
+  --green: #10b981;
+  --amber: #f59e0b;
+  --red: #ef4444;
+
+  /* UI Metrics & Physics */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-full: 9999px;
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.2), 0 2px 4px -2px rgba(0, 0, 0, 0.1);
+  --shadow-hover: 0 10px 20px -5px rgba(0, 0, 0, 0.3), 0 4px 6px -4px rgba(0, 0, 0, 0.2);
+  --shadow-glow: 0 0 15px rgba(6, 182, 212, 0.4);
+  --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+[data-theme="light"] {
+  --bg: #f8fafc;
+  --surface: #ffffff;
+  --surface-2: #f1f5f9;
+  --surface-3: #e2e8f0;
+  --text: #0f172a;
+  --muted: #64748b;
+  --soft: #475569;
+  --line: #e2e8f0;
+  --line-strong: #cbd5e1;
+  --primary: #2563eb;
+  --active-bg: rgba(37, 99, 235, 0.1);
+  --active-text: #1d4ed8;
+  --shadow-card: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  --shadow-hover: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-glow: 0 0 15px rgba(37, 99, 235, 0.25);
+}
+
+/* Global UX Improvements */
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color var(--transition), color var(--transition);
+}
+
+/* Buttons & Interactive Elements */
+button {
+  transition: var(--transition);
+  border-radius: var(--radius-sm);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button.primary {
+  background: linear-gradient(135deg, var(--primary), var(--cyan));
+  color: #fff;
+  border: none;
+  box-shadow: var(--shadow-glow);
+}
+
+button.primary:hover {
+  box-shadow: 0 0 25px rgba(6, 182, 212, 0.6);
+  transform: translateY(-2px);
+}
+
+/* Panels & Cards (Floating effect) */
+.panel, .readiness-card, .mode-card, .metric {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-card);
+  transition: var(--transition);
+}
+
+.mode-card:hover, .plan-mini-task:hover, .search-result:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--line-strong);
+}
+
+/* Header Glassmorphism (Sticky blur) */
+.topbar {
+  background: color-mix(in srgb, var(--surface) 85%, transparent) !important;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  box-shadow: 0 4px 20px -2px rgba(0,0,0,0.1);
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+/* ==========================================================================
+   Answer Buttons & Interactive Elements UX/UI Improvements
+   ========================================================================== */
+
+.answers {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.answers button {
+  background: var(--surface-2);
+  border: 1px solid var(--line-strong);
+  padding: 16px 20px;
+  text-align: left;
+  border-radius: var(--radius-md);
+  font-size: 1.05rem;
+  font-weight: 500;
+  transition: var(--transition);
+  cursor: pointer;
+  display: block;
+  width: 100%;
+  line-height: 1.5;
+}
+
+.answers button:hover:not(:disabled) {
+  background: var(--surface-3);
+  border-color: var(--primary);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-card);
+}
+
+.answers button:active:not(:disabled) {
+  transform: translateY(0) scale(0.98);
+  box-shadow: none;
+}
+
+.answers button.selected {
+  background: var(--active-bg);
+  border-color: var(--primary);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.answers button.correct {
+  background: rgba(16, 185, 129, 0.15) !important;
+  border-color: var(--green) !important;
+  color: var(--green) !important;
+  font-weight: 700;
+}
+
+.answers button.wrong {
+  background: rgba(239, 68, 68, 0.15) !important;
+  border-color: var(--red) !important;
+  color: var(--red) !important;
+  font-weight: 700;
+  text-decoration: line-through;
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+  font-size: 1.3rem;
+  padding: 6px 10px !important;
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Flashcard Interaction */
+.flashcard {
+  transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1), box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.flashcard:hover {
+  box-shadow: var(--shadow-hover);
+  border-color: var(--primary);
+  transform: translateY(-4px);
+}
+
+.flashcard:active {
+  transform: scale(0.98);
+}
+
+/* PBQ Drag & Drop Chips */
+.dnd-chip {
+  transition: var(--transition);
+  cursor: grab;
+}
+
+.dnd-chip:hover {
+  background: var(--primary);
+  color: white;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-card);
+}
+
+.dnd-chip:active {
+  cursor: grabbing;
+  transform: scale(0.95);
+}
